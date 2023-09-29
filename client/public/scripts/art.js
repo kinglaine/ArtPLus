@@ -1,6 +1,7 @@
 const renderGift = async () => {
   const requestedID = parseInt(window.location.href.split('/').pop())
-
+  console.log("requesting single art")
+  
   const response = await fetch('/gallery')
   const data = await response.json()
 
@@ -8,17 +9,16 @@ const renderGift = async () => {
 
   let art
 
-  art = data.find(art => art.Id === requestedID)
+  art = data.find(art => art.id === requestedID)
 
   if (art) {
-    document.getElementById('image').src =  art.Image_URL
-    document.getElementById('Title').textContent = art.Title
-    document.getElementById('CreatedBy').textContent = 'Created by: ' + art.Description
-    document.getElementById('CreatedOn').textContent = 'Created on: ' + art.Date_Created
-  }
-  else {
+    document.getElementById('image').src =  art.image_url
+    document.getElementById('Title').textContent = art.title
+    document.getElementById('CreatedBy').textContent = 'Created by: ' + art.description
+    document.getElementById('CreatedOn').textContent = 'Created on: ' + art.date_created
+  }else {
     const message = document.createElement('h2')
-    message.textContent = 'No Arts Available 😞'
+    message.textContent = 'No Artsss Available 😞'
     giftContent.appendChild(message)   
   }
 }

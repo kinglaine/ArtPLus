@@ -15,24 +15,24 @@ const renderGifts = async () => {
       const bottomContainer = document.createElement('div')
       bottomContainer.classList.add('bottom-container')
 
-      topContainer.style.backgroundImage = `url(${art.Image_URL})`
+      topContainer.style.backgroundImage = `url(${art.image_url})`
 
       const name = document.createElement('h3')
-      name.textContent = art.Title
+      name.textContent = art.title
       bottomContainer.appendChild(name)
 
       const pricePoint = document.createElement('p')
-      pricePoint.textContent = 'Title: ' + art.Text
+      pricePoint.textContent = 'Title: ' + art.text
       bottomContainer.appendChild(pricePoint)
 
       const audience = document.createElement('p')
-      audience.textContent = 'Created By: ' + art.Description
+      audience.textContent = 'Created By: ' + art.description
       bottomContainer.appendChild(audience)
 
       const link = document.createElement('a')
       link.textContent = 'Read More >'
       link.setAttribute('role', 'button')
-      link.href = `/gallery/${art.Id}`
+      link.href = `gallery/${art.id}`
       bottomContainer.appendChild(link)
 
       card.appendChild(topContainer)
