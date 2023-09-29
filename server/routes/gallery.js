@@ -1,21 +1,17 @@
-import express from 'express'
-import path from 'path'
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import ArtsController from '../controllers/arts.js'
 
-import { fileURLToPath } from 'url'
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-import giftData from '../data/gallery.js'
+const router = express.Router();
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-
-const router = express.Router()
-
-router.get('/', (req, res) => {
-  res.status(200).json(giftData)
-})
+router.get('/', ArtsController.getArts)
 
 router.get('/:artId', (req, res) => {
-  res.status(200).sendFile(path.resolve(__dirname, '../public/art.html'))
-})
+    res.status(200).sendFile(path.resolve(__dirname, '../public/art.html'))
+});
 
-export default router
+export default router;
